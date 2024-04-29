@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-apps-deployment
+  labels:
+    app: react-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app 
+    spec:
+      containers:
+      - name: mcdonald
+        image: meedo365/donalds:1.0  
+        ports:
+        - containerPort: 80 # Container port is 80 from docker image
+
+# meedo365/donalds:1.0
+# minikube start
+# kubectl apply -f deployment.yml
+# kubectl apply -f service.yml
+# kubectl get deployments
+# kubectl get services
+# minikube service <service-name>
+# kubectl get pods
